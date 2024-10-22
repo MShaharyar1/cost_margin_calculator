@@ -19,12 +19,19 @@ This is a Python-based desktop application designed to help marble businesses ma
   - `uuid` (for generating unique order IDs, part of Python's standard library)
   - `datetime` (for capturing current date and time, part of Python's standard library)
 
-## Installation
+## Installation Guide
 
-### Step 1: Clone the Repository
+### Step 1: Install Python
 
-First, clone this repository or download the project files.
+#### For Windows:
+1. Go to the official Python website: https://www.python.org/downloads/
+2. Download the latest version of Python (version 3.6 or higher).
+3. Run the installer and **check the box to add Python to the system PATH**.
+4. Complete the installation process.
 
-```bash
-git clone https://github.com/your-username/marble-business-cost-calculator.git
-cd marble-business-cost-calculator
+#### For macOS:
+1. Open Terminal and use Homebrew (if installed) to install Python:
+   ```bash
+   brew install python
+### Step 2: Install Dependencies
+  pip install openpyxl
