@@ -10,28 +10,21 @@ This is a Python-based desktop application designed to help marble businesses ma
 - **Data Export**: Exports the order data into an Excel file (`marble_business_calculation.xlsx`) with structured rows for easy tracking.
 - **No Data Overwrite**: Each order is appended to the existing Excel file without overwriting previous entries.
 
-## Requirements
-
-- **Python**: Version 3.6 or higher
-- **Required Libraries**:
-  - `tkinter` (for GUI creation, pre-installed with Python)
-  - `openpyxl` (for creating and exporting Excel files)
-  - `uuid` (for generating unique order IDs, part of Python's standard library)
-  - `datetime` (for capturing current date and time, part of Python's standard library)
-
-## Installation Guide
+## Installation
 
 ### Step 1: Install Python
 
-#### For Windows:
-1. Go to the official Python website: https://www.python.org/downloads/
-2. Download the latest version of Python (version 3.6 or higher).
-3. Run the installer and **check the box to add Python to the system PATH**.
-4. Complete the installation process.
+To run this application, you need to have Python installed on your system.
 
-#### For macOS:
-1. Open Terminal and use Homebrew (if installed) to install Python:
+1. **Download Python**: Go to the official Python website [python.org](https://www.python.org/downloads/) and download the latest version of Python (3.6 or higher).
+2. **Install Python**:
+   - **Windows/Mac**: Run the installer and follow the prompts. Ensure that you check the box that says "Add Python to PATH" during installation.
+   - **Linux**: Use your package manager to install Python. For example:
+     ```bash
+     sudo apt update
+     sudo apt install python3
+     ```
+3. **Verify the Installation**:
+   After installation, open a terminal or command prompt and type:
    ```bash
-   brew install python
-### Step 2: Install Dependencies
-  pip install openpyxl
+   python --version
