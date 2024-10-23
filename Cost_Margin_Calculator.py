@@ -48,7 +48,7 @@ def export_to_excel():
         current_time = current_datetime.strftime("%H:%M:%S")
         
         # Check if the Excel file already exists
-        file_name = "marble_business_calculation.xlsx"
+        file_name = "Rizwan_Marble_Cost.xlsx"
         if os.path.exists(file_name):
             # Open the existing workbook
             wb = openpyxl.load_workbook(file_name)
@@ -57,7 +57,7 @@ def export_to_excel():
             # Create a new workbook and add a sheet if the file doesn't exist
             wb = openpyxl.Workbook()
             ws = wb.active
-            ws.title = "Marble Business Calculation"
+            ws.title = "Rizwan_Marble_Cost"
             
             # Write headers in the new Excel sheet
             ws.append(["Order ID", "Date", "Time", "Description", "Cost (PKR)"])
