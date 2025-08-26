@@ -5,6 +5,27 @@ import os
 import uuid
 from datetime import datetime
 
+
+def _to_float(value):
+    """Safely convert a string to float.
+
+    Returns 0.0 when conversion fails so that export_to_excel writes
+    numeric values instead of text with currency symbols.
+    """
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def _label_amount(label_widget):
+    """Extract the numeric amount from a label widget."""
+    text = label_widget.cget("text")
+    # Labels are of the form "Description: PKR <amount>"
+    # We only need the numeric part for Excel.
+    return _to_float(text.split()[-1])
+
+
 # Function to calculate total cost and profit for the marble business
 def calculate_cost():
     try:
@@ -64,19 +85,19 @@ def export_to_excel():
         
         # Prepare the cost breakdown data
         data = [
-            ("Qabar Marble", entry_qabar_marble.get()),
-            ("Thin Qabar Marble", entry_thin_qabar_marble.get()),
-            ("Style", entry_style.get()),
-            ("Liner", entry_liner.get()),
-            ("Steel", entry_steel.get()),
-            ("Labor (Mazdoori)", entry_labor.get()),
-            ("Transportation", entry_transportation.get()),
-            ("Writing (Likhai)", entry_writing.get()),
-            ("Total Cost", label_total_cost.cget("text").split(": ")[1]),
-            ("Profit", label_profit.cget("text").split(": ")[1]),
-            ("Total Price (with profit)", label_final_price.cget("text").split(": ")[1]),
-            ("Advance Payment", entry_advance.get()),
-            ("Remaining Balance", label_remaining_balance.cget("text").split(": ")[1])
+            ("Qabar Marble", _to_float(entry_qabar_marble.get())),
+            ("Thin Qabar Marble", _to_float(entry_thin_qabar_marble.get())),
+            ("Style", _to_float(entry_style.get())),
+            ("Liner", _to_float(entry_liner.get())),
+            ("Steel", _to_float(entry_steel.get())),
+            ("Labor (Mazdoori)", _to_float(entry_labor.get())),
+            ("Transportation", _to_float(entry_transportation.get())),
+            ("Writing (Likhai)", _to_float(entry_writing.get())),
+            ("Total Cost", _label_amount(label_total_cost)),
+            ("Profit", _label_amount(label_profit)),
+            ("Total Price (with profit)", _label_amount(label_final_price)),
+            ("Advance Payment", _to_float(entry_advance.get())),
+            ("Remaining Balance", _label_amount(label_remaining_balance)),
         ]
         
         # Append Order ID, Date, and Time in the first row
